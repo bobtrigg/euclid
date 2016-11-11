@@ -1,3 +1,7 @@
+/*
+    @TODO - add pop-ups with explanatory text
+    @TODO - use less to enhance CSS
+*/
 var scalingFactor;
 
 function resetPage() {
@@ -20,6 +24,8 @@ function calculateGCF() {
         diagram.width(maxVal * scalingFactor);
         diagram.height(minVal * scalingFactor);
         diagram.css("display","block");
+    } else {
+        diagram.css("display","none");
     }
 
     while ((maxVal % minVal) !== 0) {
@@ -34,18 +40,37 @@ function calculateGCF() {
 }
 
 function showCalc(maxVal, minVal) {
-    if (document.getElementById("showMe").checked) {
-        document.getElementById("calculation").innerHTML += maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>";
-        var divDim = Math.floor(maxVal/minVal);
-        var randomColor = getRandomColor();
-        for (var i=0; i<divDim; i++) {
-            $("#diagram").append("<div style=\"width:" + (minVal*scalingFactor) + "px;height:" + (minVal*scalingFactor) + "px;background-color:" + randomColor + "\">" + /*minVal + "x" + minVal + */"</div>");
-        }
+
+    if ( ! document.getElementById("showMe").checked) {
+        return;
+    }
+
+    var divDim = Math.floor(maxVal/minVal);
+    var divString; 
+    var randomColors = new Array(randomRgbComponent(),randomRgbComponent(),randomRgbComponent());
+    var randomColor = getRgbColor(randomColors);
+    var compColor;
+    
+    document.getElementById("calculation").innerHTML += maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>";
+
+    for (var i=0; i<3; i++) {
+        randomColors[i] = 255 - randomColors[i];
+    }
+    compColor = getRgbColor(randomColors);
+    
+    for (var i=0; i<divDim; i++) {
+        divString = "<div " + 
+                    "style=\"width:" + (minVal*scalingFactor) + "px;" + 
+                    "height:" + (minVal*scalingFactor) + "px;" +
+                    "background-color:" + randomColor + ";" +
+                    "outline:solid 1px " + compColor + ";\">" + 
+                    "</div>";
+        $("#diagram").append(divString);
     }
 }
 
-function getRandomColor() {
-    return "rgb(" + randomRgbComponent() + "," + randomRgbComponent() + "," + randomRgbComponent() + ")";
+function getRgbColor(components) {
+    return "rgb(" + components[0] + "," + components[1] + "," + components[2] + ")";
 }
 
 function randomRgbComponent() {
