@@ -1,6 +1,6 @@
 /*
-    @TODO - add pop-ups with explanatory text
     @TODO - use less to enhance CSS
+    @TODO - add pop-ups with explanatory text
 */
 var scalingFactor;
 
