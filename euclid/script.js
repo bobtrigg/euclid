@@ -3,27 +3,23 @@
 */
 var scalingFactor;
 
-function resetPage() {
-    document.getElementById("inputArea").style.display = "block";
-}
-
 function displayGCF() {
-    var firstNum = document.getElementById("firstNum");
-    var secondNum = document.getElementById("secondNum");
+    var firstNum = $("#firstNum");
+    var secondNum = $("#secondNum");
     var minVal, maxVal;
     var gcf;
 
     clearReportData();
 
-    minVal = Math.min(firstNum.value, secondNum.value);
-    maxVal = Math.max(firstNum.value, secondNum.value);
+    minVal = Math.min(firstNum.val(), secondNum.val());
+    maxVal = Math.max(firstNum.val(), secondNum.val());
     scalingFactor = 600 / maxVal;
 
     createTheGridDiv(minVal, maxVal);
     gcf = calculateGCF(minVal, maxVal);
 
-    addTiles(gcf*scalingFactor);
-    document.getElementById("gcf").innerHTML = "Greatest common factor is " + gcf;
+    addTiles(gcf * scalingFactor);
+    $("#gcf").html("Greatest common factor is " + gcf);
 }
 
 function calculateGCF(minVal, maxVal) {
@@ -46,7 +42,7 @@ function createTheGridDiv(minVal, maxVal) {
 
     var diagram = $("#diagram");
 
-    if (document.getElementById("showMe").checked) {
+    if ($("#showMe").is(':checked')) {
         diagram.width(maxVal * scalingFactor);
         diagram.height(minVal * scalingFactor);
         diagram.css("display","block");
@@ -78,7 +74,7 @@ function addTiles(finalGcf) {
 
 function showCalc(maxVal, minVal) {
 
-    if ( ! document.getElementById("showMe").checked) {
+    if ( ! $("#showMe").is(':checked')) {
         return;
     }
 
@@ -88,7 +84,7 @@ function showCalc(maxVal, minVal) {
     var randomColor = getRgbColor(randomColors);
     var compColor;
     
-    document.getElementById("calculation").innerHTML += maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>";
+    $("#calculation").append(maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>");
 
     for (var i=0; i<3; i++) {
         randomColors[i] = 255 - randomColors[i];
@@ -118,12 +114,12 @@ function randomRgbComponent() {
 }
 
 function clearReportData() {
-    document.getElementById("gcf").innerHTML = "";
-    document.getElementById("calculation").innerHTML = "";
-    document.getElementById("diagram").innerHTML = "";
+    $("#gcf").html("");
+    $("#calculation").html("");
+    $("#diagram").html("");
 }
 
-window.onload =  function () {
+window.onload = function () {
     document.getElementById("submit").onclick = function () {
         displayGCF();
     };
