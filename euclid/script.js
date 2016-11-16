@@ -1,5 +1,4 @@
 /*
-    @TODO - use less to enhance CSS
     @TODO - add pop-ups with explanatory text
 */
 var scalingFactor;
@@ -8,11 +7,11 @@ function resetPage() {
     document.getElementById("inputArea").style.display = "block";
 }
 
-function calculateGCF() {
+function displayGCF() {
     var firstNum = document.getElementById("firstNum");
     var secondNum = document.getElementById("secondNum");
-    var minVal, maxVal, scratchVal;
-    var diagram = $("#diagram");
+    var minVal, maxVal;
+    var gcf;
 
     clearReportData();
 
@@ -20,13 +19,16 @@ function calculateGCF() {
     maxVal = Math.max(firstNum.value, secondNum.value);
     scalingFactor = 600 / maxVal;
 
-    if (document.getElementById("showMe").checked) {
-        diagram.width(maxVal * scalingFactor);
-        diagram.height(minVal * scalingFactor);
-        diagram.css("display","block");
-    } else {
-        diagram.css("display","none");
-    }
+    createTheGridDiv(minVal, maxVal);
+    gcf = calculateGCF(minVal, maxVal);
+
+    addTiles(gcf*scalingFactor);
+    document.getElementById("gcf").innerHTML = "Greatest common factor is " + gcf;
+}
+
+function calculateGCF(minVal, maxVal) {
+
+    var oldMaxVal, scratchVal;
 
     while ((maxVal % minVal) !== 0) {
         scratchVal = maxVal % minVal;
@@ -36,7 +38,42 @@ function calculateGCF() {
         showCalc(oldMaxVal, maxVal);
     }
     showCalc(maxVal, minVal);
-    document.getElementById("gcf").innerHTML = "Greatest common factor is " + minVal;
+
+    return minVal;
+}
+
+function createTheGridDiv(minVal, maxVal) {
+
+    var diagram = $("#diagram");
+
+    if (document.getElementById("showMe").checked) {
+        diagram.width(maxVal * scalingFactor);
+        diagram.height(minVal * scalingFactor);
+        diagram.css("display","block");
+    } else {
+        diagram.css("display","none");
+    }
+}
+
+function addTiles(finalGcf) {
+    var divs = $("#diagram div");
+    var compColor;
+    var numInnerTiles;
+
+    divs.each(function(ndx, elem) {
+
+        compColor = elem.getAttribute("data-color-complement");
+        numInnerTiles = Math.pow(Math.round(elem.clientHeight / finalGcf), 2);
+
+        for (var i=0; i<numInnerTiles; i++) {
+            elem.innerHTML += "<div style=\"" +
+                                  "width:" + finalGcf + "px;" + 
+                                  "height:" + finalGcf + "px;" +
+                                  "outline:dashed 1px " + compColor + ";\">" + 
+                              "</div>";
+        }
+
+    });
 }
 
 function showCalc(maxVal, minVal) {
@@ -59,15 +96,18 @@ function showCalc(maxVal, minVal) {
     compColor = getRgbColor(randomColors);
     
     for (var i=0; i<divDim; i++) {
-        divString = "<div " + 
-                    "style=\"width:" + (minVal*scalingFactor) + "px;" + 
-                    "height:" + (minVal*scalingFactor) + "px;" +
-                    "background-color:" + randomColor + ";" +
-                    "outline:solid 1px " + compColor + ";\">" + 
+        divString = "<div style=\"" + 
+                        "width:" + (minVal*scalingFactor) + "px;" + 
+                        "height:" + (minVal*scalingFactor) + "px;" +
+                        "background-color:" + randomColor + ";" +
+                        "outline:solid 2px " + compColor + ";" +
+                    "\" " +
+                    "data-color-complement=\"" + compColor + "\">" + 
                     "</div>";
         $("#diagram").append(divString);
     }
 }
+
 
 function getRgbColor(components) {
     return "rgb(" + components[0] + "," + components[1] + "," + components[2] + ")";
@@ -85,6 +125,6 @@ function clearReportData() {
 
 window.onload =  function () {
     document.getElementById("submit").onclick = function () {
-        calculateGCF();
+        displayGCF();
     };
 };
