@@ -9,8 +9,8 @@
       <div id="inputArea">
         <h2>Enter the two number for which you want the greatest common factor:</h2>
         <p>
-          <input id="firstNum" type="text" value="150">&nbsp;
-          <input id="secondNum" type="text" value="345">
+          <input id="firstNum" type="text">&nbsp;
+          <input id="secondNum" type="text">
         </p>
         <p><input id="submit" type="button" value="Find factor"></p>
         <input id="showMe" type="checkbox"> Show the calculation
@@ -20,7 +20,18 @@
       <p id="calculation"></p>
       <div id="diagram"></div>
       
+      <p id="whatis">What is Euclid's Algorithm, and how can it be used to determine the size of floor tiles?</p>
+      <div id="explanation">
+        <p>What may be the oldest algorithm was first written down by the ancient Greek mathematician Euclid. "Euclid's Algorithm," as it is known, is a method for finding the greatest commmon divisor (GCD). The GCD is the largest number that will divide into a pair of other numbers without leaving a remainder.</p>
+        <p>As explained by the mathematician <a href="https://www.simonyi.ox.ac.uk/" target="_blank">Marcus du Sautoy</a> in <cite>The Secret Rules of Modern Living: Algorithms</cite>, "While Euclid was the greatest mathematician of his day, his algorithm could have made him a fortune as a tiler....Imagine you've got a rectangular shaped floor and you want to find the most efficient way to tile it with square tiles. In other words, what's the largest square tile that will exactly divide the dimensions of the floor with nothing left over? This is, in fact, a geometric version of the greatest common divisor problem. The dimensions of the floor are the two numbers, and the size of the tiles, which we're going to try and work out, is their greatest common divisor."</p> 
+        <p>By turning on the display below, you'll see how the GCD also represents the size of the largest tile that will exactly cover a surface area. A rectangle representing the two selected numbers is first filled with as many squares with sides equal to the smallest number as will fit in the original rectangle. If there is space left over, the process is repeated for the dimensions of the remaining rectangle. In the diagram, squares of the same size are all the same color, with a complementary colored outline. Once the GCD is calculated, the "tiles" are marked in the grid with a dashed outline.</p>
+      </div>
+
   </div> 
+  <footer>
+  <!-- "Euclid," The Famous People website, 2016,//www.thefamouspeople.com/profiles/euclid-436.php [accessed Nov 28, 2016].
+Read more <a href="http://www.thefamouspeople.com/profiles/euclid-436.php#vblyRLKXVmYQ8Wxu.99">here</a>. -->
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="script.js"></script>
 </body>
