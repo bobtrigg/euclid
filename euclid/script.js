@@ -124,7 +124,4 @@ window.onload = function () {
     document.getElementById("submit").onclick = function () {
         displayGCF();
     };
-    document.getElementById("whatis").onclick = function () {
-        $("#explanation").toggle();
-    };
 };
