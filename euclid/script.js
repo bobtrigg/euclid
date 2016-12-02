@@ -1,6 +1,3 @@
-/*
-    @TODO - add pop-ups with explanatory text
-*/
 var scalingFactor;
 
 function displayGCF() {
@@ -19,7 +16,7 @@ function displayGCF() {
     gcf = calculateGCF(minVal, maxVal);
 
     addTiles(gcf * scalingFactor);
-    $("#gcf").html("Greatest common factor is " + gcf);
+    $("#gcf").css("display","block").html("Greatest common factor is " + gcf);
 }
 
 function calculateGCF(minVal, maxVal) {
@@ -52,6 +49,11 @@ function createTheGridDiv(minVal, maxVal) {
 }
 
 function addTiles(finalGcf) {
+
+    if ( ! $("#showMe").is(':checked')) {
+        return;
+    }
+
     var divs = $("#diagram div");
     var compColor;
     var numInnerTiles;
@@ -83,8 +85,7 @@ function showCalc(maxVal, minVal) {
     var randomColors = new Array(randomRgbComponent(),randomRgbComponent(),randomRgbComponent());
     var randomColor = getRgbColor(randomColors);
     var compColor;
-    
-    $("#calculation").append(maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>");
+    $("#calculation").css("display","block").append(maxVal % minVal + " is the remainder when dividing " + maxVal + " by " + minVal + "<br/>");
 
     for (var i=0; i<3; i++) {
         randomColors[i] = 255 - randomColors[i];
@@ -120,7 +121,6 @@ function clearReportData() {
 }
 
 window.onload = function () {
-    // $("#explanation").toggle();
     document.getElementById("submit").onclick = function () {
         displayGCF();
     };
