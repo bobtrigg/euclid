@@ -4,10 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="styles.css" rel="stylesheet" type="text/css">
+  <title>Euclid's Algorithm</title>
 </head>
 <body>
   <div id="container">
-    <h1>Euclid's Algorithm</h1>
+    <h1>Euclid&apos;s Algorithm</h1>
       <div id="inputArea">
         <h2>Enter the two number for which you want the greatest common factor:</h2>
         <p>
@@ -23,7 +24,7 @@
       <div id="diagram"></div>
 
       <button type="button" id="infobutton" class="btn btn-default" data-toggle="modal" data-target="#infomodal">
-        What is Euclid's Algorithm?
+        What is Euclid&apos;s Algorithm?
       </button>
 
       <div class="modal fade" id="infomodal" tabindex="-1" role="dialog" aria-labelledby="whatis">
@@ -31,13 +32,13 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h4 class="modal-title" id="whatis">What is Euclid's Algorithm, and how can it be used to determine the size of floor tiles?</h4>
+              <h4 class="modal-title" id="whatis">What is Euclid&apos;s Algorithm, and how can it be used to determine the size of floor tiles?</h4>
             </div>
 
             <div class="modal-body">
-              <p>What may be the oldest algorithm was first written down by the ancient Greek mathematician Euclid. "Euclid's Algorithm," as it is known, is a method for finding the greatest commmon divisor (GCD). The GCD is the largest number that will divide into a pair of other numbers without leaving a remainder.</p>
-              <p>As explained by the mathematician <a href="https://www.simonyi.ox.ac.uk/" target="_blank">Marcus du Sautoy</a> in <cite>The Secret Rules of Modern Living: Algorithms</cite>, "While Euclid was the greatest mathematician of his day, his algorithm could have made him a fortune as a tiler....Imagine you've got a rectangular shaped floor and you want to find the most efficient way to tile it with square tiles. In other words, what's the largest square tile that will exactly divide the dimensions of the floor with nothing left over? This is, in fact, a geometric version of the greatest common divisor problem. The dimensions of the floor are the two numbers, and the size of the tiles, which we're going to try and work out, is their greatest common divisor."</p> 
-              <p>By turning on the display below, you'll see how the GCD also represents the size of the largest tile that will exactly cover a surface area. A rectangle representing the two selected numbers is first filled with as many squares with sides equal to the smallest number as will fit in the original rectangle. If there is space left over, the process is repeated for the dimensions of the remaining rectangle. In the diagram, squares of the same size are all the same color, with a complementary colored outline. Once the GCD is calculated, the "tiles" are marked in the grid with a dashed outline.</p>
+              <p>What may be the oldest algorithm was first written down by the ancient Greek mathematician Euclid. &quot;Euclid&apos;s Algorithm,&quot; as it is known, is a method for finding the greatest commmon divisor (GCD). The GCD is the largest number that will divide into a pair of other numbers without leaving a remainder.</p>
+              <p>As explained by the mathematician <a href="https://www.simonyi.ox.ac.uk/" target="_blank">Marcus du Sautoy</a> in <cite>The Secret Rules of Modern Living: Algorithms</cite>, &quot;While Euclid was the greatest mathematician of his day, his algorithm could have made him a fortune as a tiler....Imagine you&apos;ve got a rectangular shaped floor and you want to find the most efficient way to tile it with square tiles. In other words, what&apos;s the largest square tile that will exactly divide the dimensions of the floor with nothing left over? This is, in fact, a geometric version of the greatest common divisor problem. The dimensions of the floor are the two numbers, and the size of the tiles, which we&apos;re going to try and work out, is their greatest common divisor.&quot;</p> 
+              <p>By turning on the display below, you&apos;ll see how the GCD also represents the size of the largest tile that will exactly cover a surface area. A rectangle representing the two selected numbers is first filled with as many squares with sides equal to the smallest number as will fit in the original rectangle. If there is space left over, the process is repeated for the dimensions of the remaining rectangle. In the diagram, squares of the same size are all the same color, with a complementary colored outline. Once the GCD is calculated, the &quot;tiles&quot; are marked in the grid with a dashed outline.</p>
             </div>
 
             <div class="modal-footer">
@@ -48,9 +49,16 @@
         </div><!--modal-dialog-->
       </div><!--modal-->
       
+      <footer>
+        <ul id="navlinks">
+          <li><a href="../..">Bob Trigg home</a></li>
+          <li><a href="../../?page_id=119">Projects</a></li>
+          <li><a href="../../?page_id=124">Blog</a></li>
+          <li><a href="../../?page_id=385">About</a></li>
+        </ul>
+      </footer>
+
   </div> 
-  <footer>
-  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="script.js"></script>
