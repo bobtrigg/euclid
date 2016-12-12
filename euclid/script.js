@@ -6,6 +6,11 @@ function displayGCF() {
     var minVal, maxVal, currWidth;
     var gcf;
 
+    if (! valuesAreValid()) {
+        alert("The values you are providing must both be integers");
+        return;
+    }
+
     clearReportData();
 
     minVal = Math.min(firstNum.val(), secondNum.val());
@@ -18,6 +23,22 @@ function displayGCF() {
 
     addTiles(gcf * scalingFactor);
     $("#gcf").css("display","block").html("Greatest common factor is " + gcf);
+}
+
+/**
+Input values should be numeric and be an integer greater than 0
+*/
+function valuesAreValid() {
+    var firstVal = Number($("#firstNum").val());
+    var secondVal = Number($("#secondNum").val());
+
+    if (isNaN(firstVal) || isNaN(secondVal)) {
+        return false;
+    }
+    return (firstVal > 0 && 
+            Number.isInteger(firstVal) && 
+            secondVal > 0 && 
+            Number.isInteger(secondVal));
 }
 
 function calculateGCF(minVal, maxVal) {
