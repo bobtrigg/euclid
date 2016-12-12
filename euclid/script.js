@@ -3,14 +3,15 @@ var scalingFactor;
 function displayGCF() {
     var firstNum = $("#firstNum");
     var secondNum = $("#secondNum");
-    var minVal, maxVal;
+    var minVal, maxVal, currWidth;
     var gcf;
 
     clearReportData();
 
     minVal = Math.min(firstNum.val(), secondNum.val());
     maxVal = Math.max(firstNum.val(), secondNum.val());
-    scalingFactor = 600 / maxVal;
+    currWidth = Math.min(600, $("#container").width());
+    scalingFactor = currWidth / maxVal;
 
     createTheGridDiv(minVal, maxVal);
     gcf = calculateGCF(minVal, maxVal);

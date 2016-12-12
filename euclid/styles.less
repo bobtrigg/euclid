@@ -15,7 +15,7 @@ body {
   background: #b97a17;
 }
 #container {
-  width: 700px;
+  max-width: 700px;
   margin: auto;
   background:azure;
   padding: 25px;
@@ -76,5 +76,11 @@ footer {
     list-style-type:none;
     display:inline;
     padding: 0 20px;
+  }
+}
+@media screen and (max-width:420px) {
+  footer li {
+    display:block;
+    text-align:left;
   }
 }
